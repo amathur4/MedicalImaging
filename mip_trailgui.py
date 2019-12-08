@@ -7,12 +7,16 @@ import numpy as np
 from PIL import Image, ImageTk
 from matplotlib import pyplot as plt
 
+<<<<<<< HEAD
 
 window = tk.Tk() # window is the main window which pops up when the program runs
 #window.configure()
 #window.title('MRI Intelligence Scanning using ICA and K-spaces')
 #window.geometry("1250x750")
 
+=======
+window = tk.Tk() # window is the main window which pops up when the program runs
+>>>>>>> 696dd3b1628979b82f710ac265c1de271bd91661
 
 class gui:
 
@@ -37,7 +41,11 @@ class gui:
         browse_button.grid(row=0, column=0, pady=10, sticky=tk.W)
 
 
+<<<<<<< HEAD
          # Output Image
+=======
+        # Output Image
+>>>>>>> 696dd3b1628979b82f710ac265c1de271bd91661
 
 
         #  Operation
@@ -105,6 +113,7 @@ class gui:
 g = gui()
 g.page1(window)
 window.mainloop()
+<<<<<<< HEAD
 #browsebutton = Button(window1, text="Browse", command=lambda: self.browsefunc(window1))
 #browsebutton.place(relx=.2, rely=.8, anchor="c")
 
@@ -124,3 +133,5 @@ window.mainloop()
 # .Button(arg1,arg2,...)
 # .Entry(arg1,arg2,...)
 # .Text(arg1,arg2,...)
+=======
+>>>>>>> 696dd3b1628979b82f710ac265c1de271bd91661
