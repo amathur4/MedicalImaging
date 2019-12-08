@@ -38,16 +38,16 @@ labelPhoto.grid(row=2, column=0)
 
 
 #  Operation
-v = tk.IntVar()
+# v = tk.IntVar()
 
-op_label = tk.Label(window, text="""Choose an Operation: """, padx=10, pady=5)
-op_label.grid(stick=tk.W)
+# op_label = tk.Label(window, text="""Choose an Operation: """, padx=10, pady=5)
+# op_label.grid(stick=tk.W)
 
-op_mri_button = tk.Radiobutton(window, text="mri", padx=20, variable=v, value=1)
-op_mri_button.grid(sticky=tk.W, padx=30)
+# op_mri_button = tk.Radiobutton(window, text="mri", padx=20, variable=v, value=1)
+# op_mri_button.grid(sticky=tk.W, padx=30)
 
-op_k_button = tk.Radiobutton(window, text="k-space", padx=20, variable=v, value=2)
-op_k_button.grid(sticky=tk.W, padx=30)
+# op_k_button = tk.Radiobutton(window, text="k-space", padx=20, variable=v, value=2)
+# op_k_button.grid(sticky=tk.W, padx=30)
 
 
 # Input Parameters
