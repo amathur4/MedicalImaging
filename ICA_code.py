@@ -17,6 +17,7 @@ class gui:
     input_image_list = []
     original_images, kspace_images, ica_images, kspace_output = [], [], [], []
 
+    # ICA algorithm
     def compute_ica_output(self, image_list, no_of_components, max_iterations, tolerance):
         self.original_images = []
         self.kspace_images = []
@@ -53,6 +54,8 @@ class gui:
         return self.original_images, self.kspace_images, self.ica_images, self.kspace_output
 
     #input_image_list = ['P10-0001.jpg', 'P10-0002.jpg', 'P10-0003.jpg', 'P10-0004.jpg', 'P10-0005.jpg']
+
+    # Displays the final output images after applying ICA algorithm
     def apply(self, window):
         self.original_images, self.kspace_images, self.ica_images, self.kspace_output = self.compute_ica_output(self.input_image_list, 15, 100000, 0.000001)
 
@@ -75,19 +78,11 @@ class gui:
         browse_button = tk.Button(window, text="Browse", command=lambda: self.browsefunc(window))
         browse_button.grid(row=0, column=0, pady=10, sticky=tk.W)
 
-
-        # Output Image
-
-
-        #  Operation
-
-
+        # Heading for the input parameters
         op_label = tk.Label(window, text="""Parameters: """, padx=10, pady=5)
         op_label.grid(row=0, column=3, sticky=tk.W)
 
-
         # Input Parameters
-
         # ---------------- LABELS ----------------
         # Label for Number of components
         InputLabel1 = tk.Label(window, text="Number of Components")
@@ -114,10 +109,11 @@ class gui:
         InputField3 = tk.Entry(window, textvariable="tolerance")
         InputField3.grid(row=3, column=4, sticky=tk.E + tk.W)
 
-        # Process Button
+        # Button for the ICA function to be applied on the input image.
         process_button = tk.Button(window, text="Apply", command = lambda:self.apply(window))
         process_button.grid(row=4, column=4)
 
+    # displays the image as a label on the main window once the browse button is clicked
     def browsefunc(self, window):
         filename = filedialog.askopenfile()
 
