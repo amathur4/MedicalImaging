@@ -103,7 +103,7 @@ class gui:
 
         # Entry field for Tolerance
         InputField3 = tk.Entry(window, textvariable = "tolerance")
-        self.tolerance = int(InputField3.get())
+        self.tolerance = float(InputField3.get())
         InputField3.grid(row = 3, column = 4, sticky = tk.E + tk.W)
 
         # Button for the ICA function to be applied on the input image.
