@@ -82,7 +82,7 @@ class gui:
     def page1(self, window):
         self.window = window
         window.title('MRI Intelligence Scanning using ICA and K-spaces')
-        window.geometry("1250 x 750")
+        window.geometry("1250x750")
 
         # Browse Button
         browse_button = tk.Button(window, text = "Browse", command = lambda: self.browsefunc(window))
