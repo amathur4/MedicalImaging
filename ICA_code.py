@@ -93,12 +93,12 @@ class gui:
         # ---------------- ENTRIES ----------------
         # Entry field for Number of components
         InputField1 = tk.Entry(window, textvariable = "components")
-        self.components = int(InputField1.get())
+        self.components = int(float(InputField1.get()))
         InputField1.grid(row = 1, column = 4, sticky = tk.E + tk.W)
 
         # Entry field for Number of Iterationss
         InputField2 = tk.Entry(window, textvariable = "iterations")
-        self.iterations = int(InputField2.get())
+        self.iterations = int(float(InputField2.get()))
         InputField2.grid(row = 2, column = 4, sticky = tk.E + tk.W)
 
         # Entry field for Tolerance
