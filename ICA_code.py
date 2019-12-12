@@ -59,26 +59,6 @@ class gui:
 
         return original_images, kspace_images, ica_images, kspace_output
 
-    # Displays the final output images after applying ICA algorithm
-    def apply(self):
-        self.original_images, self.kspace_images, self.ica_images, self.kspace_output = self.compute_ica_output(
-            self.input_image_list, self.components, self.iterations, self.tolerance)
-
-        # displaying K-space of input image
-        self.photo1 = ImageTk.PhotoImage(Image.fromarray(self.kspace_images[0]))
-        self.labelPhoto = Label(window, image = self.photo1)
-        self.labelPhoto.grid(row = 6, column = 0)
-
-        # displaying output image after performing ICA on input image
-        self.photo2 = ImageTk.PhotoImage(Image.fromarray(self.ica_images[0]))
-        self.labelPhoto = Label(window, image = self.photo2)
-        self.labelPhoto.grid(row = 5, column = 1)
-
-        # displaying K-space of output image
-        self.photo3 = ImageTk.PhotoImage(Image.fromarray(self.kspace_output[0]))
-        self.labelPhoto = Label(window, image = self.photo3)
-        self.labelPhoto.grid(row = 6, column = 1)
-
     def page1(self, window):
         self.window = window
         window.title('MRI Intelligence Scanning using ICA and K-spaces')
@@ -143,6 +123,26 @@ class gui:
         self.photo = ImageTk.PhotoImage(self.image)
         self.labelPhoto = Label(window, image = self.photo)
         self.labelPhoto.grid(row = 5, column = 0)
+        
+   # Displays the final output images after applying ICA algorithm
+    def apply(self):
+        self.original_images, self.kspace_images, self.ica_images, self.kspace_output = self.compute_ica_output(
+            self.input_image_list, self.components, self.iterations, self.tolerance)
+
+        # displaying K-space of input image
+        self.photo1 = ImageTk.PhotoImage(Image.fromarray(self.kspace_images[0]))
+        self.labelPhoto = Label(window, image = self.photo1)
+        self.labelPhoto.grid(row = 6, column = 0)
+
+        # displaying output image after performing ICA on input image
+        self.photo2 = ImageTk.PhotoImage(Image.fromarray(self.ica_images[0]))
+        self.labelPhoto = Label(window, image = self.photo2)
+        self.labelPhoto.grid(row = 5, column = 1)
+
+        # displaying K-space of output image
+        self.photo3 = ImageTk.PhotoImage(Image.fromarray(self.kspace_output[0]))
+        self.labelPhoto = Label(window, image = self.photo3)
+        self.labelPhoto.grid(row = 6, column = 1)
 
 g = gui()
 g.page1(window)
