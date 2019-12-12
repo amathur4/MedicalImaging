@@ -93,17 +93,17 @@ class gui:
         # ---------------- ENTRIES ----------------
         # Entry field for Number of components
         InputField1 = tk.Entry(window, textvariable = "components")
-        self.components = InputField1.get()
+        self.components = int(InputField1.get())
         InputField1.grid(row = 1, column = 4, sticky = tk.E + tk.W)
 
         # Entry field for Number of Iterationss
         InputField2 = tk.Entry(window, textvariable = "iterations")
-        self.iterations = InputField2.get()
+        self.iterations = int(InputField2.get())
         InputField2.grid(row = 2, column = 4, sticky = tk.E + tk.W)
 
         # Entry field for Tolerance
         InputField3 = tk.Entry(window, textvariable = "tolerance")
-        self.tolerance = InputField3.get()
+        self.tolerance = int(InputField3.get())
         InputField3.grid(row = 3, column = 4, sticky = tk.E + tk.W)
 
         # Button for the ICA function to be applied on the input image.
