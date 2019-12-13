@@ -14,9 +14,9 @@ window = tk.Tk()  # window is the main window which pops up when the program run
 class gui:
     input_image_list = []
     original_images, kspace_images, ica_images, kspace_output = [], [], [], []
-    components = 0
-    iterations = 0
-    tolerance = 0
+    #components = 0
+    #iterations = 0
+    #tolerance = 0
 
     # ICA algorithm
     # made the compute_ica_output function so that it can take multiple images as input and generate their corresponding outputs
@@ -92,18 +92,15 @@ class gui:
 
         # ---------------- ENTRIES ----------------
         # Entry field for Number of components
-        InputField1 = tk.Entry(window, textvariable = "components")
-        self.components = int(float(InputField1.get()))
+        self.InputField1 = tk.Entry(window, textvariable = "components")
         InputField1.grid(row = 1, column = 4, sticky = tk.E + tk.W)
 
         # Entry field for Number of Iterationss
-        InputField2 = tk.Entry(window, textvariable = "iterations")
-        self.iterations = int(float(InputField2.get()))
+        self.InputField2 = tk.Entry(window, textvariable = "iterations")
         InputField2.grid(row = 2, column = 4, sticky = tk.E + tk.W)
 
         # Entry field for Tolerance
-        InputField3 = tk.Entry(window, textvariable = "tolerance")
-        self.tolerance = float(InputField3.get())
+        self.InputField3 = tk.Entry(window, textvariable = "tolerance")
         InputField3.grid(row = 3, column = 4, sticky = tk.E + tk.W)
 
         # Button for the ICA function to be applied on the input image.
@@ -126,6 +123,10 @@ class gui:
         
    # Displays the final output images after applying ICA algorithm
     def apply(self):
+        self.components = int(float(InputField1.get()))
+        self.iterations = int(float(InputField2.get()))
+        self.tolerance = float(InputField3.get())
+        
         self.original_images, self.kspace_images, self.ica_images, self.kspace_output = self.compute_ica_output(
             self.input_image_list, self.components, self.iterations, self.tolerance)
 
