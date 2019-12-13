@@ -123,9 +123,9 @@ class gui:
         
    # Displays the final output images after applying ICA algorithm
     def apply(self):
-        self.components = int(float(InputField1.get()))
-        self.iterations = int(float(InputField2.get()))
-        self.tolerance = float(InputField3.get())
+        self.components = int(float(self.InputField1.get()))
+        self.iterations = int(float(self.InputField2.get()))
+        self.tolerance = float(self.InputField3.get())
         
         self.original_images, self.kspace_images, self.ica_images, self.kspace_output = self.compute_ica_output(
             self.input_image_list, self.components, self.iterations, self.tolerance)
