@@ -13,7 +13,6 @@ window = tk.Tk()  # window is the main window which pops up when the program run
 
 class gui:
     # ICA algorithm
-    # made the compute_ica_output function so that it can take multiple images as input and generate their corresponding outputs
     def compute_ica_output(self, input_img_path, no_of_components, max_iterations, tolerance):
         image_name = input_img_path
         input_image = cv.imread(image_name, 0)
