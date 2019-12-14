@@ -22,7 +22,7 @@ class gui:
         input_image = np.fft.fftshift(input_image)
         img = np.uint8(np.log(np.abs(input_image) + 1) * 10)
         kspace_image = img
-
+        
         img = np.fft.ifftshift(input_image)
         img = np.fft.ifft2(img)                       # performing IFFT to get the input back and perform ICA on it
         img = np.uint8(np.log(np.abs(img) + 1) * 10)
@@ -37,10 +37,10 @@ class gui:
         imagefcs = np.zeros((image_restored.shape[0], image_restored.shape[1]), np.float)
         for i in range(image_restored.shape[0]):      # performing a full contrast stretch for cler visibility of the output
             for j in range(image_restored.shape[1]):
-                imagefcs[i, j] = np.log(np.abs(image_restored[i, j]) * 10)
+                imagefcs[i, j] = ((np.abs(image_restored[i, j]) - image_restored.min()) * 255) / (image_restored.max() - image_restored.min())
         ica_image = imagefcs
-
-        imagefcs = np.fft.fft2(imagefcs)
+        
+        imagefcs = np.fft.fft2(image_restored)
         imagefcs = np.fft.fftshift(imagefcs)
 
         output_kspace = np.uint8(np.log(np.abs(imagefcs) + 1) * 10)
@@ -54,15 +54,15 @@ class gui:
         window.geometry("1250x750")
 
         # Browse Button
-        browse_button = tk.Button(window, text = "Browse", command = lambda: self.browsefunc(window))
+        browse_button = tk.Button(window, text = "Browse", command = lambda: self.browsefunc(window), padx=10, pady=5)
         browse_button.grid(row = 0, column = 0, pady = 10, sticky = tk.W)
 
         # Heading for the input parameters
-        op_label = tk.Label(window, text="""Parameters: """, padx=10, pady=5)
+        op_label = tk.Label(window, text="""Parameters: """)
         op_label.grid(row=0, column=3, sticky=tk.W)
 
         # Exit Button
-        quit_button = tk.Button(window, text="EXIT",fg='red', command=window.destroy)
+        quit_button = tk.Button(window, text="EXIT",fg='red', command=window.destroy, padx=10, pady=5)
         quit_button.grid(row=7, column=0)
 
         # Input Parameters
@@ -120,17 +120,17 @@ class gui:
             self.input_img_path, self.components, self.iterations, self.tolerance)
 
         # displaying K-space of input image
-        self.photo1 = ImageTk.PhotoImage(Image.fromarray(self.kspace_images[0]))
+        self.photo1 = ImageTk.PhotoImage(Image.fromarray(self.kspace_image))
         self.labelPhoto = Label(window, image = self.photo1)
         self.labelPhoto.grid(row = 6, column = 0)
 
         # displaying output image after performing ICA on input image
-        self.photo2 = ImageTk.PhotoImage(Image.fromarray(self.ica_images[0]))
+        self.photo2 = ImageTk.PhotoImage(Image.fromarray(self.ica_image))
         self.labelPhoto = Label(window, image = self.photo2)
         self.labelPhoto.grid(row = 5, column = 1)
 
         # displaying K-space of output image
-        self.photo3 = ImageTk.PhotoImage(Image.fromarray(self.kspace_output[0]))
+        self.photo3 = ImageTk.PhotoImage(Image.fromarray(self.kspace_output))
         self.labelPhoto = Label(window, image = self.photo3)
         self.labelPhoto.grid(row = 6, column = 1)
 
